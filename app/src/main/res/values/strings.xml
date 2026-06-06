@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Truco Score Board</string>
+    <string name="first_player">Jogador 1:</string>
+    <string name="player_points">%s pontos</string>
+    <string name="second_player_name">Jogador 2:</string>
+    <string name="point_1">+1</string>
+    <string name="point_3">+3</string>
+    <string name="point_6">+6</string>
+    <string name="point_9">+9</string>
+    <string name="point_12">+12</string>
+    <string name="history">Histórico</string>
+    <string name="clear_history">Limpar Histórico</string>
+    <string name="naming_inform">Inf. Nomes</string>
+</resources>

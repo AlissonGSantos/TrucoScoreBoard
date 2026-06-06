@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_first_player_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/first_player"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_first_player_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/player_points"
+        app:layout_constraintStart_toEndOf="@id/tv_first_player_name"
+        app:layout_constraintTop_toTopOf="@id/tv_first_player_name" />
+
+    <com.google.android.material.button.MaterialButtonGroup
+        android:id="@+id/btg_first_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_first_player_name">
+
+        <Button
+            android:id="@+id/btn_1_first_player"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/point_1" />
+
+        <Button
+            android:id="@+id/btn_3_first_player"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/point_3" />
+
+        <Button
+            android:id="@+id/btn_6_first_player"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/point_6" />
+
+        <Button
+            android:id="@+id/btn_9_first_player"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/point_9" />
+
+        <Button
+            android:id="@+id/btn_12_first_player"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/point_12" />
+
+    </com.google.android.material.button.MaterialButtonGroup>
+
+    <TextView
+        android:id="@+id/tv_second_player_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/second_player_name"
+        app:layout_constraintStart_toStartOf="@+id/tv_first_player_name"
+        app:layout_constraintTop_toBottomOf="@id/btg_first_player" />
+
+    <TextView
+        android:id="@+id/tv_second_player_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/player_points"
+        app:layout_constraintStart_toEndOf="@id/tv_second_player_name"
+        app:layout_constraintTop_toTopOf="@id/tv_second_player_name" />
+
+    <com.google.android.material.button.MaterialButtonGroup
+        android:id="@+id/btg_second_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_second_player_name">
+
+        <Button
+            android:id="@+id/btn_1_second_player"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/point_1" />
+
+        <Button
+            android:id="@+id/btn_3_second_player"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/point_3" />
+
+        <Button
+            android:id="@+id/btn_6_second_player"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/point_6" />
+
+        <Button
+            android:id="@+id/btn_9_second_player"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/point_9" />
+
+        <Button
+            android:id="@+id/btn_12_second_player"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/point_12" />
+
+    </com.google.android.material.button.MaterialButtonGroup>
+
+    <com.google.android.material.button.MaterialButtonGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btg_second_player">
+
+        <Button
+            android:id="@+id/history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/history"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_history"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/naming_inform"/>
+
+    </com.google.android.material.button.MaterialButtonGroup>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
