@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import br.edu.utfpr.trucoscoreboard.databinding.ActivityChangeNameBinding
 import br.edu.utfpr.trucoscoreboard.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +18,8 @@ class MainActivity : AppCompatActivity() {
     private var secondPlayerScore = 0
     private var firstPlayerWins = 0
     private var secondPlayerWins = 0
+    private var firstPlayerName = ""
+    private var secondPlayerName = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,15 +44,44 @@ class MainActivity : AppCompatActivity() {
             updateUI()
         }
 
-        setupPlayerButtons(1, binding.btn1FirstPlayer, binding.btn3FirstPlayer, binding.btn6FirstPlayer, binding.btn9FirstPlayer, binding.btn12FirstPlayer)
-        setupPlayerButtons(2, binding.btn1SecondPlayer, binding.btn3SecondPlayer, binding.btn6SecondPlayer, binding.btn9SecondPlayer, binding.btn12SecondPlayer)
+        setupPlayerButtons(
+            1,
+            binding.btn1FirstPlayer,
+            binding.btn3FirstPlayer,
+            binding.btn6FirstPlayer,
+            binding.btn9FirstPlayer,
+            binding.btn12FirstPlayer
+        )
+        setupPlayerButtons(
+            2,
+            binding.btn1SecondPlayer,
+            binding.btn3SecondPlayer,
+            binding.btn6SecondPlayer,
+            binding.btn9SecondPlayer,
+            binding.btn12SecondPlayer
+        )
+
         binding.btnClearHistory.setOnClickListener { resetWins() }
         binding.btnHistory.setOnClickListener { showHistoryActivity() }
-        binding.btnChangeName.setOnClickListener { showChangeNameActivity()  }
+        binding.btnChangeName.setOnClickListener { showChangeNameActivity() }
     }
 
     private fun showChangeNameActivity() {
-// TODO: implement change name view 
+        val intent = Intent(this, ChangeNameActivity::class.java)
+
+        intent.putExtra("first_player_name", firstPlayerName)
+        intent.putExtra("second_player_name", secondPlayerName)
+
+        getResult.launch(intent)
+    }
+
+    private val getResult = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()) { result ->
+
+        if (result.resultCode == RESULT_OK) {
+            firstPlayerName = result.data?.getStringExtra("first_player_name").toString()
+            secondPlayerName = result.data?.getStringExtra("second_player_name").toString()
+        }
     }
 
     private fun showHistoryActivity() {
@@ -87,19 +120,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showWinnerDialog(message: String) {
-        AlertDialog.Builder(this)
-            .setTitle(R.string.winner_dialog_title)
-            .setMessage(message)
+        AlertDialog.Builder(this).setTitle(R.string.winner_dialog_title).setMessage(message)
             .setPositiveButton(R.string.ok) { _, _ ->
                 resetPoints()
-            }
-            .setCancelable(false)
-            .show()
+            }.setCancelable(false).show()
     }
 
     private fun updateUI() {
-        binding.tvFirstPlayerPoints.text = getString(R.string.player_points, firstPlayerScore.toString())
-        binding.tvSecondPlayerPoints.text = getString(R.string.player_points, secondPlayerScore.toString())
+        binding.tvFirstPlayerPoints.text =
+            getString(R.string.player_points, firstPlayerScore.toString())
+        binding.tvSecondPlayerPoints.text =
+            getString(R.string.player_points, secondPlayerScore.toString())
     }
 
     private fun resetPoints() {

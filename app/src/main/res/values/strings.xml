@@ -18,4 +18,7 @@
     <string name="player_wins">%s vitórias</string>
     <string name="go_back">Voltar</string>
     <string name="history_title">Histórico de vitórias</string>
+    <string name="change_name_title">Mudar nome dos jogadores</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="name_change_successfully">Nomes alterados com sucesso!</string>
 </resources>

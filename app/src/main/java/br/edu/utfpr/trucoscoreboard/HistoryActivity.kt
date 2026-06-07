@@ -16,8 +16,8 @@ class HistoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityHistoryBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
+        setContentView(binding.root)
         enableEdgeToEdge()
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -25,8 +25,8 @@ class HistoryActivity : AppCompatActivity() {
             insets
         }
 
-        binding.tvFirstPlayerWins.text = intent.getIntExtra("first_player_wins", 0).toString()
-        binding.tvSecondPlayerWins.text = intent.getIntExtra("second_player_wins", 0).toString()
+        binding.tvFirstPlayerWins.text = getString(R.string.player_wins, intent.getIntExtra("first_player_wins", 0).toString())
+        binding.tvSecondPlayerWins.text = getString(R.string.player_wins, intent.getIntExtra("second_player_wins", 0).toString())
 
         binding.btnGoBack.setOnClickListener { finish() }
 
