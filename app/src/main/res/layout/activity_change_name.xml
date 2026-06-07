@@ -29,6 +29,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/edt_first_player_wins" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toEndOf="@id/tv_first_player_name"
+        app:layout_constraintTop_toTopOf="@id/tv_first_player_name" />
+
     <EditText
         android:id="@+id/edt_first_player_wins"
         android:layout_width="0dp"
@@ -54,6 +62,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/edt_second_player_name"
         app:layout_constraintStart_toStartOf="@+id/tv_first_player_name"
         app:layout_constraintTop_toTopOf="@+id/edt_second_player_name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toEndOf="@id/tv_second_player_name"
+        app:layout_constraintTop_toTopOf="@id/tv_second_player_name" />
 
     <EditText
         android:id="@+id/edt_second_player_name"

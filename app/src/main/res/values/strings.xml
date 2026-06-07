@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Truco Score Board</string>
-    <string name="first_player_name">Jogador 1:</string>
-    <string name="second_player_name">Jogador 2:</string>
+    <string name="first_player_name">Jogador 1</string>
+    <string name="second_player_name">Jogador 2</string>
     <string name="player_points">%s pontos</string>
     <string name="point_1">+1</string>
     <string name="point_3">+3</string>
@@ -22,4 +22,5 @@
     <string name="change_name_title">Mudar nome dos jogadores</string>
     <string name="confirmar">Confirmar</string>
     <string name="name_change_successfully">Nomes alterados com sucesso!</string>
+    <string name="colon">:</string>
 </resources>

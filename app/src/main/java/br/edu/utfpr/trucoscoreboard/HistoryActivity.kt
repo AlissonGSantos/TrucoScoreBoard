@@ -9,8 +9,6 @@ import br.edu.utfpr.trucoscoreboard.databinding.ActivityHistoryBinding
 
 class HistoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHistoryBinding
-    private var firstPlayerWins = 0
-    private var secondPlayerWins = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
