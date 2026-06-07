@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/first_player"
+        android:text="@string/first_player_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/player_points"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toEndOf="@id/tv_first_player_name"
         app:layout_constraintTop_toTopOf="@id/tv_first_player_name" />
 
@@ -78,6 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/second_player_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="@+id/tv_first_player_name"
         app:layout_constraintTop_toBottomOf="@id/btg_first_player" />
 
@@ -87,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/player_points"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toEndOf="@id/tv_second_player_name"
         app:layout_constraintTop_toTopOf="@id/tv_second_player_name" />
 
@@ -145,19 +149,21 @@
         app:layout_constraintTop_toBottomOf="@id/btg_second_player">
 
         <Button
-            android:id="@+id/history"
+            android:id="@+id/btn_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/history"
             />
 
         <Button
+            android:id="@+id/btn_clear_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/clear_history"
             />
 
         <Button
+            android:id="@+id/btn_change_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/naming_inform"/>
