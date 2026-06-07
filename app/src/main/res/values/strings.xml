@@ -14,6 +14,7 @@
     <string name="winner_dialog_title">Fim de Jogo</string>
     <string name="player_1_wins">Jogador 1 ganhou!</string>
     <string name="player_2_wins">Jogador 2 ganhou!</string>
+    <string name="player_wins_game">%s ganhou!</string>
     <string name="ok">OK</string>
     <string name="player_wins">%s vitórias</string>
     <string name="go_back">Voltar</string>

@@ -4,12 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import br.edu.utfpr.trucoscoreboard.databinding.ActivityChangeNameBinding
 import br.edu.utfpr.trucoscoreboard.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -34,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        loadPlayerNames()
         if (savedInstanceState != null) {
             firstPlayerScore = savedInstanceState.getInt("first_player_score")
             secondPlayerScore = savedInstanceState.getInt("second_player_score")
@@ -66,22 +65,28 @@ class MainActivity : AppCompatActivity() {
         binding.btnChangeName.setOnClickListener { showChangeNameActivity() }
     }
 
-    private fun showChangeNameActivity() {
-        val intent = Intent(this, ChangeNameActivity::class.java)
-
-        intent.putExtra("first_player_name", firstPlayerName)
-        intent.putExtra("second_player_name", secondPlayerName)
-
-        getResult.launch(intent)
+    override fun onResume() {
+        super.onResume()
+        loadPlayerNames()
+        updateUI()
     }
 
-    private val getResult = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()) { result ->
+    private fun loadPlayerNames() {
+        val sharedPreferences = getSharedPreferences("truco_prefs", MODE_PRIVATE)
+        firstPlayerName = sharedPreferences.getString("first_player_name", "").toString()
+        secondPlayerName = sharedPreferences.getString("second_player_name", "").toString()
 
-        if (result.resultCode == RESULT_OK) {
-            firstPlayerName = result.data?.getStringExtra("first_player_name").toString()
-            secondPlayerName = result.data?.getStringExtra("second_player_name").toString()
+        if (firstPlayerName.isEmpty()) {
+            firstPlayerName = getString(R.string.first_player_name)
         }
+        if (secondPlayerName.isEmpty()) {
+            secondPlayerName = getString(R.string.second_player_name)
+        }
+    }
+
+    private fun showChangeNameActivity() {
+        val intent = Intent(this, ChangeNameActivity::class.java)
+        startActivity(intent)
     }
 
     private fun showHistoryActivity() {
@@ -112,10 +117,10 @@ class MainActivity : AppCompatActivity() {
     private fun checkWinner() {
         if (firstPlayerScore >= 12) {
             firstPlayerWins++
-            showWinnerDialog(getString(R.string.player_1_wins))
+            showWinnerDialog(getString(R.string.player_wins_game, firstPlayerName))
         } else if (secondPlayerScore >= 12) {
             secondPlayerWins++
-            showWinnerDialog(getString(R.string.player_2_wins))
+            showWinnerDialog(getString(R.string.player_wins_game, secondPlayerName))
         }
     }
 
@@ -127,6 +132,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI() {
+        binding.tvFirstPlayerName.text = firstPlayerName
+        binding.tvSecondPlayerName.text = secondPlayerName
         binding.tvFirstPlayerPoints.text =
             getString(R.string.player_points, firstPlayerScore.toString())
         binding.tvSecondPlayerPoints.text =

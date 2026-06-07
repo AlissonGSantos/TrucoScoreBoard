@@ -25,6 +25,15 @@ class HistoryActivity : AppCompatActivity() {
             insets
         }
 
+        val sharedPreferences = getSharedPreferences("truco_prefs", MODE_PRIVATE)
+        var firstPlayerName = sharedPreferences.getString("first_player_name", "").toString()
+        var secondPlayerName = sharedPreferences.getString("second_player_name", "").toString()
+
+        if (firstPlayerName.isEmpty()) firstPlayerName = getString(R.string.first_player_name)
+        if (secondPlayerName.isEmpty()) secondPlayerName = getString(R.string.second_player_name)
+
+        binding.tvFirstPlayerName.text = firstPlayerName
+        binding.tvSecondPlayerName.text = secondPlayerName
         binding.tvFirstPlayerWins.text = getString(R.string.player_wins, intent.getIntExtra("first_player_wins", 0).toString())
         binding.tvSecondPlayerWins.text = getString(R.string.player_wins, intent.getIntExtra("second_player_wins", 0).toString())
 
