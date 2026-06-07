@@ -6,6 +6,7 @@ import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import br.edu.utfpr.trucoscoreboard.databinding.ActivityMainBinding
@@ -60,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             binding.btn12SecondPlayer
         )
 
-        binding.btnClearHistory.setOnClickListener { resetWins() }
+        binding.btnClearHistory.setOnClickListener { resetHistory() }
         binding.btnHistory.setOnClickListener { showHistoryActivity() }
         binding.btnChangeName.setOnClickListener { showChangeNameActivity() }
     }
@@ -146,9 +147,17 @@ class MainActivity : AppCompatActivity() {
         updateUI()
     }
 
-    private fun resetWins() {
+    private fun resetHistory() {
+        val sharedPreferences = getSharedPreferences("truco_prefs", MODE_PRIVATE)
+        sharedPreferences.edit { clear() }
+
         firstPlayerWins = 0
         secondPlayerWins = 0
+        firstPlayerScore = 0
+        secondPlayerScore = 0
+        
+        loadPlayerNames()
+        updateUI()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
